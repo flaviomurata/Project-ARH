@@ -1,0 +1,98 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "PlayerActs",
+            "id": "a14d3611-bc18-4fea-8d8c-fb337ba5cf89",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "65750303-2b79-419a-86ce-617174123b32",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "VerticalMove",
+                    "type": "Button",
+                    "id": "17c36f0d-7ac7-4028-b599-74de3cd11315",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "xAxis",
+                    "id": "82e3fbac-44fd-48ba-bcbb-6e9345d30d1e",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "4092b937-63c3-456e-a46f-fb72468466d2",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6e417af8-0bfd-4d90-81b4-7bbebb077b30",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Jump",
+                    "id": "0e84964f-2cef-45f1-ac50-65a1b34a6e53",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "0324e355-8348-4980-8d61-773d79efa8cc",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "573cd61c-c334-46dc-b088-0ec5b4345cea",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
