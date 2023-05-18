@@ -1,0 +1,76 @@
+{
+    "name": "EduNewControls",
+    "maps": [
+        {
+            "name": "PlayerInput",
+            "id": "d842f39c-3b36-47d8-8bd9-20ad8ee863d5",
+            "actions": [
+                {
+                    "name": "Walk",
+                    "type": "Value",
+                    "id": "e06ead26-7e6c-49c2-ab77-cfc93e87f599",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "be2fd57a-9ed4-4b41-be35-8bb0fb80dff7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "A_D",
+                    "id": "4e735446-b316-4449-bd7f-d121bd654e32",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "98eaa164-fed6-45ef-af7e-7438effee0ac",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "dde617a0-5fa8-4044-b5fc-d07049fdf387",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "06a7211d-75fb-4d2c-9195-3b69f8cd79a9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
