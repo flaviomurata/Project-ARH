@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [FormerlySerializedAs("groundLayer")] [SerializeField]
     private LayerMask _groundLayer;
 
-    private int _counter = 0;
+    private bool _doubleJump;
     private float _horizontal;
     private float _speed = 2f;
     private float _jumpPower = 8f;
@@ -34,12 +34,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (IsGrounded() && context.canceled)
+        {
+            _doubleJump = false;
+        }
         if (context.performed)
         {
-            if (IsGrounded() || _counter < 2)
+            if (IsGrounded() || _doubleJump)
             {
-                _counter++;
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpPower);
+                _doubleJump = !_doubleJump;
             }
         }
 
@@ -51,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        _counter = 0;
         return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer);
     }
 }
