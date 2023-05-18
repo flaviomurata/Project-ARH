@@ -17,6 +17,9 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        
+        if (_ctx.IsJumping)
+        {
+            SwitchState(_factory.Jump());
+        }
     }
 }

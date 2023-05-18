@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour
@@ -9,10 +10,16 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerBaseState _currentstate;
     private PlayerStateFactory _states;
     
+    // getters and setters
     public PlayerBaseState CurrentState
     {
         get { return _currentstate; }
         set { _currentstate = value; }
+    }
+    
+    public bool IsJumping
+    {
+        get { return _isJumping; }
     }
     
     private Collision _coll;
@@ -26,7 +33,10 @@ public class PlayerStateMachine : MonoBehaviour
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
-
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    
+    
     [Space]
     [Header("Booleans")]
     public bool canMove;
@@ -39,15 +49,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private bool _groundTouch;
     private bool _hasDashed;
+    private bool _isJumping;
 
     public int side = 1;
-
-    [Space]
-    [Header("Polish")]
-    public ParticleSystem dashParticle;
-    public ParticleSystem jumpParticle;
-    public ParticleSystem wallJumpParticle;
-    public ParticleSystem slideParticle;
 
     void Awake()
     {
@@ -59,7 +63,7 @@ public class PlayerStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -75,7 +79,11 @@ public class PlayerStateMachine : MonoBehaviour
         float xRaw = Input.GetAxisRaw("Horizontal");
         float yRaw = Input.GetAxisRaw("Vertical");
         Vector2 dir = new Vector2(x, y);
+        
+    }
 
-        Walk(dir);
+    void OnJump(InputAction.CallbackContext context)
+    {
+        _isJumping = context.ReadValueAsButton();
     }
 }
