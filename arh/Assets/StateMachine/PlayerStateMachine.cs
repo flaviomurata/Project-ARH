@@ -5,40 +5,39 @@ using UnityEngine.InputSystem;
 
 public class PlayerStateMachine : MonoBehaviour
 {
-    CharacterController _characterController;
-    Animator _animator;
-    PlayerInput _playerInput;
+    private CharacterController _characterController;
+    private Animator _animator;
+    private PlayerInput _playerInput;
 
-    int _isWalkingHash;
-    int _isRunningHash;
+    private int _isWalkingHash;
+    private int _isRunningHash;
 
-    Vector2 _currentMovementInput;
-    Vector2 _currentMovementInput;
-    Vector2 _appliedMovement;
-    bool _isMovementPressed;
-    bool _isRunPressed;
+    private Vector2 _currentMovementInput;
+    private Vector2 _appliedMovement;
+    private bool _isMovementPressed;
+    private bool _isRunPressed;
 
-    float _rotationFactorPerFrame = 15.0f;
-    float _runMultiplier = 4.0f;
-    int _zero = 0;
+    private float _rotationFactorPerFrame = 15.0f;
+    private float _runMultiplier = 4.0f;
+    private int _zero = 0;
 
-    float _gravity  = -9.8f;
-    float _groundedGravity = -.05f;
+    private float _gravity  = -9.8f;
+    private float _groundedGravity = -.05f;
 
-    bool _isJumpPressed = false;
-    float _initialJumpVelocity;
-    float _maxJumpHeight = 4.0f;
-    float _maxJumpTime = .75f;
-    bool _isJumping = false;
-    int _isJumpingHash;
-    int _jumpCountHash;
-    bool _isJumpAnimating = false;
-    int _jumpCount = 0;
-    Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
-    Dictionary<int, float> _jumpGravities = new Dictionary<int, float>();
-    Coroutine _currentJumpResetRoutine = null;
+    private bool _isJumpPressed = false;
+    private float _initialJumpVelocity;
+    private float _maxJumpHeight = 4.0f;
+    private float _maxJumpTime = .75f;
+    private bool _isJumping = false;
+    private int _isJumpingHash;
+    private int _jumpCountHash;
+    private bool _isJumpAnimating = false;
+    private int _jumpCount = 0;
+    private Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
+    private Dictionary<int, float> _jumpGravities = new Dictionary<int, float>();
+    private Coroutine _currentJumpResetRoutine = null;
 
-    PlayerBaseState _currentState;
+    private PlayerBaseState _currentState;
 
     void Awake()
     {
