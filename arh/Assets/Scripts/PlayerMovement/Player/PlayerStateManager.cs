@@ -35,7 +35,7 @@ public class PlayerStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentState.updateState(this);
     }
 
     private void move(InputAction.CallbackContext obj)
