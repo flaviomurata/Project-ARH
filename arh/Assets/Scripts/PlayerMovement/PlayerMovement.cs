@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -15,12 +17,24 @@ public class PlayerMovement : MonoBehaviour
     [FormerlySerializedAs("groundLayer")] [SerializeField]
     private LayerMask _groundLayer;
 
+    private GroundHandler IsGrounded;
     private bool _doubleJump;
     private float _horizontal;
     private float _speed = 2f;
     private float _jumpPower = 8f;
 
+    private void OnEnable()
+    {
+        IsGrounded.IsGroundedEvent.AddListener(Jump);            
+    }
 
+    private void OnDisable()
+    {
+        IsGrounded.IsGroundedEvent.RemoveListener(Jump);
+    }
+    //todo: Assistir ao video de como fazer uma state machine com a movimentacao nova da unity
+    
+    
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -34,13 +48,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (IsGrounded() && context.canceled)
+        if (_doubleJump && context.canceled)
         {
             _doubleJump = false;
         }
+
         if (context.performed)
         {
-            if (IsGrounded() || _doubleJump)
+            if (_doubleJump)
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpPower);
                 _doubleJump = !_doubleJump;
@@ -53,8 +68,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private void CanJump()
     {
-        return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer);
+        Jump();
     }
+    
 }
