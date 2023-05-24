@@ -1,7 +1,12 @@
+using Unity.VisualScripting;
+
 public abstract class PlayerBaseState
 {
+    protected bool _isRootState = false;
     protected PlayerStateMachine _ctx;
     protected PlayerStateFactory _factory;
+    protected PlayerBaseState _currentSubState;
+    protected PlayerBaseState _currentSuperState;
 
     public PlayerBaseState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     {
@@ -19,7 +24,14 @@ public abstract class PlayerBaseState
 
     public abstract void InitializeSubState();
 
-    void UpdateStates(){}
+    public void UpdateStates()
+    {
+        UpdateState();
+        if (_currentSubState != null)
+        {
+            _currentSubState.UpdateStates();
+        }
+    }
 
     protected void SwitchState(PlayerBaseState newState)
     {
@@ -27,10 +39,23 @@ public abstract class PlayerBaseState
         
         newState.EnterState();
 
-        _ctx.CurrentState = newState;
+        if (_isRootState)
+        {
+            _ctx.CurrentState = newState;   
+        } else if (_currentSuperState != null)
+        {
+            _currentSuperState.SetSuperState(newState);
+        }
     }
-    
-    protected void SetSuperState(){}
-    
-    protected void SetSubState(){}
+
+    protected void SetSuperState(PlayerBaseState newSuperState)
+    {
+        _currentSuperState = newSuperState;
+    }
+
+    protected void SetSubState(PlayerBaseState newSubState)
+    {
+        _currentSubState = newSubState;
+        newSubState.SetSuperState(this);
+    }
 }
