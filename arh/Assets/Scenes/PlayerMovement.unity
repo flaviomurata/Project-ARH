@@ -3090,7 +3090,6 @@ GameObject:
   - component: {fileID: 652072518}
   - component: {fileID: 652072517}
   - component: {fileID: 652072522}
-  - component: {fileID: 652072521}
   - component: {fileID: 652072523}
   - component: {fileID: 652072515}
   m_Layer: 0
@@ -3173,18 +3172,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &652072521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652072514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a412d0bacb26a49b06cd6932f4d14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &652072522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3212,8 +3199,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 652072521}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+      - m_Target: {fileID: 652072523}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
         m_MethodName: OnWalkInput
         m_Mode: 0
         m_Arguments:
@@ -3228,8 +3215,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 652072521}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+      - m_Target: {fileID: 652072523}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
         m_MethodName: OnJumpInput
         m_Mode: 0
         m_Arguments:
@@ -3256,10 +3243,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 652072514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcbe81b2dbfaaf49a874652751f6c2f, type: 3}
+  m_Script: {fileID: 11500000, guid: a174e3cdbd813344ca89e70b9ffc37ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  movementSpeed: 7
+  jumpForce: 12
+  fallMultiplier: 3
+  lowJumpMultiplier: 8
 --- !u!1 &870453552
 GameObject:
   m_ObjectHideFlags: 0

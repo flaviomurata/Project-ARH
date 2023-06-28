@@ -1,5 +1,5 @@
 {
-    "name": "Player",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Gameplay",
@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "5ba78d7a-b762-4ae1-a1a6-cca198378c2b",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
                 },
